@@ -24,15 +24,19 @@ def powerSet(items):
 
 
 
+s = [1, 2, 3, 4, 5, 6]
+combinations = 0
+for p in powerSet(s):
+    combinations += 1
 
-# for p in powerSet([1, 2, 3]):
-#     print(p)
+print('set length :', len(s))
+print('combinations :', combinations)
 
 
 
-for i in range(10**2):
-    for j in range(2):
-        print('{0:b}'.format(i), '>>', '{0:b}'.format(j), '=', '{0:b}'.format(i >> j)
-              , '=', i >> j)
+# for i in range(10**2):
+#     for j in range(2):
+#         print('{0:b}'.format(i), '>>', '{0:b}'.format(j), '=', '{0:b}'.format(i >> j)
+#               , '=', i >> j)
 
 
