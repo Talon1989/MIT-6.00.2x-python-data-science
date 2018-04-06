@@ -5,20 +5,21 @@ from Food import Food
 
 
 def maxVal(toConsider, available):
-    '''
+    """
     :param toConsider: list of items
     :param available: a weight
     :return: tuple of total value of a solution to 0/1 knapsack and the items
-    '''
+    """
+    print('toConsider len:', len(toConsider), ' | available:', available)
     if toConsider == [] or available == 0:
-        result = 0, ()
+        return 0, ()
+    nextItem = toConsider[0]
     # If the first object weights more than the current available, do without it
-    elif toConsider[0].getCost() > available:
+    if nextItem.getCost() > available:
         # Explore right branch only
         result = maxVal(toConsider[1:], available)
     # If the first object is ok, take two branches, one with it and one without it
     else:
-        nextItem = toConsider[0]
         #  Explore left branch
         withVal, withToTake = maxVal(toConsider[1:], available-nextItem.getCost())
         withVal += nextItem.getValue()
@@ -32,7 +33,7 @@ def maxVal(toConsider, available):
     return result
 
 
-def testMaxVal(foods, maxUnits, printItems = True):
+def testMaxVal(foods, maxUnits, printItems=True):
     print('Use search tree to allocate', maxUnits, 'calories')
     val, taken = maxVal(foods, maxUnits)
     print('Total value of items taken =', val)
