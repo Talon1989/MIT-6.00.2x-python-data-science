@@ -20,3 +20,18 @@ g.addEdge(Edge(g.getNode('ACB'), g.getNode('CAB')))
 g.addEdge(Edge(g.getNode('BCA'), g.getNode('CBA')))
 g.addEdge(Edge(g.getNode('BAC'), g.getNode('BCA')))
 g.addEdge(Edge(g.getNode('CAB'), g.getNode('CBA')))
+
+
+# ---------------------------------------------------------
+
+
+class WeightedEdge(Edge):
+    def __init__(self, src, dest, weight):
+        self.src = src
+        self.dest = dest
+        self.weight = weight
+    def getWeight(self):
+        return self.weight
+    def __str__(self):
+        return self.src.getName() + '->' + self.dest.getName() \
+               + ' (' + str(self.weight) + ')'
