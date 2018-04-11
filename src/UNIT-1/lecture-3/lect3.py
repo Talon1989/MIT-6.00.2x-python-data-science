@@ -158,8 +158,8 @@ def BFS(graph, start, end, toPrint):
     initPath = [start]
     pathQueue = [initPath]
     while len(pathQueue) != 0:
+        tmpPath = pathQueue.pop(0)  # get and remove oldest/first element
         print('current pathQueue length', len(pathQueue))
-        tmpPath = pathQueue.pop(0)  # get and remove oldest element
         if toPrint:
             print('Current BFS path:', printPath(tmpPath))
         lastNode = tmpPath[-1]
