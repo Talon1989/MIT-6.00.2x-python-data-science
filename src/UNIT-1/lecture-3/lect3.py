@@ -156,10 +156,10 @@ def BFS(graph, start, end, toPrint):
     :return: a shortest path from start to end node in graph
     """
     # initPath = [start]
-    pathQueue = [[start]]
+    pathQueue = [[start]]  # pathQueue is an array of array of nodes, with starting one is an array with a single node, the starting one
     while len(pathQueue) > 0:
+        # tmpPath is an array of nodes
         tmpPath = pathQueue.pop(0)  # get and remove oldest/first element
-        print('current pathQueue length', len(pathQueue))
         if toPrint:
             print('Current BFS path:', printPath(tmpPath))
         lastNode = tmpPath[-1]
@@ -169,6 +169,8 @@ def BFS(graph, start, end, toPrint):
             if nextNode not in tmpPath:
                 newPath = tmpPath + [nextNode]
                 pathQueue.append(newPath)
+            elif toPrint:
+                print(nextNode, ' already searched')
     return None
 
 
