@@ -155,9 +155,9 @@ def BFS(graph, start, end, toPrint):
     :param toPrint: boolean to activate print
     :return: a shortest path from start to end node in graph
     """
-    initPath = [start]
-    pathQueue = [initPath]
-    while len(pathQueue) != 0:
+    # initPath = [start]
+    pathQueue = [[start]]
+    while len(pathQueue) > 0:
         tmpPath = pathQueue.pop(0)  # get and remove oldest/first element
         print('current pathQueue length', len(pathQueue))
         if toPrint:
@@ -173,4 +173,4 @@ def BFS(graph, start, end, toPrint):
 
 
 # testSp('Boston', 'Phoenix')
-testSp('Boston', 'Los Angeles')
+testSp('Boston', 'Phoenix')
