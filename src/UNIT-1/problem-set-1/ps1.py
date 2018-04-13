@@ -55,8 +55,21 @@ def greedy_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    trips = []
+    copyCows = cows.copy()
+    while copyCows != {}:
+        counter = 0
+        trip = []
+        for cow in sorted(copyCows.items(), key=lambda x: x[1], reverse=True):
+            if counter + cow[1] <= limit:
+                trip.append(cow[0])
+                counter += cow[1]
+                del copyCows[cow[0]]
+        trips.append(trip)
+    return trips
+
+
+
 
 
 # Problem 2
@@ -80,8 +93,34 @@ def brute_force_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    trips = []
+    lowestParts = 99999999999999999999
+    for partition in get_partitions(cows):
+        currentParts = len(partition)
+        # print(len(partition))
+        if lowestParts > currentParts:
+            tempTrips = []
+            flag = True
+            for mucche in partition:
+                counter = 0
+                # print(mucche)
+                if flag:
+                    for c in mucche:
+                        # print(mucche)
+                        if (counter + cows[c]) <= limit:
+                            counter += cows[c]
+                        else:
+                            flag = False
+                            break
+                # print(mucche)
+                tempTrips.append(mucche)
+            # print(flag)
+            if flag:
+                lowestParts = len(partition)
+                trips = tempTrips
+            # print(counter, ' / ', limit)
+    return trips
+
 
 
 # Problem 3
@@ -98,8 +137,12 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    mills = time.time() * 1000
+    greedy_cow_transport(cows)
+    print('greedy algorithm took', (time.time()*1000) - mills, 'milliseconds')
+    mills = time.time() * 1000
+    brute_force_cow_transport(cows)
+    print('brute force algorithm took', (time.time()*1000) - mills, 'milliseconds')
 
 
 """
@@ -109,8 +152,7 @@ lines to print the result of your problem.
 """
 
 cows = load_cows("ps1_cow_data.txt")
-limit = 100
-print(cows)
-
-print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
+limit = 30
+# print(greedy_cow_transport(cows, limit))
+# print(brute_force_cow_transport(cows, limit))
+compare_cow_transport_algorithms()

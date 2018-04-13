@@ -160,6 +160,7 @@ def BFS(graph, start, end, toPrint):
     while len(pathQueue) > 0:
         # tmpPath is an array of nodes
         tmpPath = pathQueue.pop(0)  # get and remove oldest/first element
+        # print(len(pathQueue))
         if toPrint:
             print('Current BFS path:', printPath(tmpPath))
         lastNode = tmpPath[-1]
@@ -167,6 +168,7 @@ def BFS(graph, start, end, toPrint):
             return tmpPath
         for nextNode in graph.childrenOf(lastNode):
             if nextNode not in tmpPath:
+                print(' => adding', nextNode, 'to', printPath(tmpPath))
                 newPath = tmpPath + [nextNode]
                 pathQueue.append(newPath)
             elif toPrint:
