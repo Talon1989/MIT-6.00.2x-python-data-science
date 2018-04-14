@@ -84,7 +84,8 @@ def displayRetireWMonthsAndRatesAndDifferentLabels(monthlies, rates, terms):
     for m in monthlies:
         for r in rates:
             x, y = retire(m, r, terms)
-            lineStyle = mLabels[monthlies.index(m)]+rLabels[rates.index(r)]
+            lineStyle = mLabels[monthlies.index(m) % len(mLabels)]\
+                        + rLabels[rates.index(r) % len(rLabels)]
             plt.plot(x, y,
                      lineStyle,
                      label='retire '+str(m)+'$ with rate of '+str(r)+'%'
