@@ -98,7 +98,7 @@ def brute_force_cow_transport(cows, limit=10):
     for partition in get_partitions(cows):
         currentParts = len(partition)
         # print(len(partition))
-        if lowestParts > currentParts:
+        if currentParts < lowestParts:
             tempTrips = []
             flag = True
             for mucche in partition:
