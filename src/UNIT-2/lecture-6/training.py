@@ -1,4 +1,5 @@
 import pylab
+import sys
 
 
 def factorial(x):
@@ -19,4 +20,20 @@ def combinations(n, k):
 # plot 20choose1 > 20choose2 > ... 20choose20
 
 
-print(combinations(30, 15))
+def combinationGraph(size=10):
+    sampleList = []
+    combinationList = []
+    for k in range(size):
+        sampleList.append(k)
+        combinationList.append(combinations(size, k))
+    pylab.plot(sampleList, combinationList)
+    pylab.title('Combinations over range')
+    pylab.xlabel('k')
+    pylab.ylabel('kCn')
+    pylab.legend(loc='upper left')
+    pylab.show()
+
+
+
+sys.setrecursionlimit(10001)
+combinationGraph(100)
