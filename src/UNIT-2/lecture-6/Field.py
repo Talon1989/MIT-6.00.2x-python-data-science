@@ -1,3 +1,8 @@
+import random
+
+from Location import Location
+
+
 class Field:
 
     def __init__(self):
@@ -31,3 +36,25 @@ class Field:
             raise ValueError('Drunk not in field')
         else:
             return self.drunks[drunk]
+
+
+class OddField(Field):
+
+    def __init__(self, numHoles=1000, xRange=100, yRange=100):
+        Field.__init__(self)
+        # dict: key = tuple x,y ; value = Location()
+        self.wormholes = {}
+        for _ in range(numHoles):
+            x = random.randint(-xRange, xRange)
+            y = random.randint(-yRange, yRange)
+            newX = random.randint(-xRange, xRange)
+            newY = random.randint(-yRange, yRange)
+            self.wormholes[(x, y)] = Location(newX, newY)
+
+    # overriding, when drunk falls into a x,y of wormholes dict, teleport it to its value
+    def moveDrunk(self, drunk):
+        Field.moveDrunk(self, drunk)
+        x = self.drunks[drunk].getX()
+        y = self.drunks[drunk].getY()
+        if (x, y) in self.wormholes:
+            self.drunks[drunk] = Location(self.wormholes[x, y])
