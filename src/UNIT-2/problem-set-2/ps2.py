@@ -404,4 +404,5 @@ def showPlot2(title, x_label, y_label):
 # print(runSimulation(4, 1.0, 12, 12, .6, 10, StandardRobot))
 #  [229, 211, 279, 248, 276, 215, 212, 193, 212, 269]
 
+print()
 showPlot1('Time It Takes 1 - 10 Robots To Clean 80% Of A Room ', 'robots', 'steps')
