@@ -140,8 +140,8 @@ def plotLocations(drunkKinds, numSteps, numTrials):
 
 # drunkTest( (10, 100, 1000, 10000), 100, ColdDrunk )
 
-# walks = (10, 100, 1000, 10000)
-# simAll(walks, 100, (UsualDrunk, ColdDrunk))
+walks = (10, 100, 1000, 10000)
+simAll(walks, 100, (UsualDrunk, ColdDrunk))
 
-random.seed(0)
-plotLocations((UsualDrunk, ColdDrunk), 10000, 1000)
+# random.seed(0)
+# plotLocations((UsualDrunk, ColdDrunk), 10000, 1000)
