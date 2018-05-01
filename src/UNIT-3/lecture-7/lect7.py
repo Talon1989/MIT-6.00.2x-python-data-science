@@ -1,5 +1,8 @@
 import random
 
+import pylab
+import scipy.integrate
+
 from RouletteCls import FairRoulette, AmRoulette, EuRoulette
 
 
@@ -61,8 +64,32 @@ def testRouletteWEmpiricalRule(numTrials):
                   + '% with 95% confidence')
 
 
-random.seed(0)
-numTrials = 20
-testRouletteWEmpiricalRule(numTrials)
+# random.seed(0)
+# numTrials = 20
+# testRouletteWEmpiricalRule(numTrials)
 
+# ------------ CHECKING EMPIRICAL RULE ------------
+
+def gaussian(x, mu, sigma):
+    factor1 = ( 1.0 / ( sigma * ( ( 2 * pylab.pi ) ** 0.5 ) ) )
+    factor2 = pylab.e ** -( ( ( x - mu ) ** 2 ) / ( 2 * ( sigma ** 2 ) ) )
+    return factor1 * factor2
+
+
+def checkEmpirical(numTrials):
+    for t in range(numTrials):
+        mu = random.randint(-10, 10)
+        sigma = random.randint(1, 10)
+        print('For mu=', mu, 'and sigma =', sigma)
+        for numStd in (1, 1.96, 3):
+            area = scipy.integrate.quad(
+                gaussian,  #  function
+                mu - (numStd * sigma),  # lower limit, 'a'
+                mu + (numStd * sigma),  # upper limit, 'b'
+                (mu, sigma)  # other, non 'x' arguments
+            )[0]
+            print( ' Fraction within', numStd, 'std =', round(area, 4) )
+
+
+checkEmpirical(3)
 
