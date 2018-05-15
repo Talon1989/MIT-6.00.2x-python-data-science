@@ -53,7 +53,7 @@ def testCLTSimple():
 
 def wRoulette():
     numTrials = 50000
-    numSpins = 200
+    numSpins = 2000
     game = FairRoulette()
     means = []
     for _ in range(numTrials):
