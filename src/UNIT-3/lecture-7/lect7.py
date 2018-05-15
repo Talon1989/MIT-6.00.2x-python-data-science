@@ -30,7 +30,7 @@ def playRoulette(game, numSpins, toPrint=True):
     return totRed/numSpins, totBlack/numSpins, totPocket/numSpins
 
 
-def findPocketReturns(game, numTrials, trialSize, toPrint):
+def findPocketReturns(game, numTrials, trialSize, toPrint=False):
     pocketReturns = []
     for t in range(numTrials):
         pocketReturns.append(
@@ -91,5 +91,5 @@ def checkEmpirical(numTrials):
             print( ' Fraction within', numStd, 'std =', round(area, 4) )
 
 
-checkEmpirical(3)
+# checkEmpirical(3)
 

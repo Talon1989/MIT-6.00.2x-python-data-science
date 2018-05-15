@@ -28,3 +28,20 @@ def coefficientOfVariation(listOfNumbers):
 
 
 print(coefficientOfVariation([10, 4, 12, 15, 20, 5]))
+
+
+
+
+def fact(num):
+    factorial = 1
+    for n in range(1, num+1):
+        factorial *= n
+    return factorial
+
+def euler(precision):
+    num = 0
+    for l in range(precision):
+        num += 1/fact(l)
+    return num
+
+print(euler(10000))
