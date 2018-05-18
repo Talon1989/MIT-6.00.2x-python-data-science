@@ -100,10 +100,30 @@ def plotDistributions():
     pylab.figure()
 
 
+# ---------------------------------------------------------
+
+
+def tempsWithSamples(sampleSize):
+    temps = getHighs('temperatures.csv')
+    popMean = sum(temps) / len(temps)
+    numTrials = 10000
+    numBad = 0
+    for _ in range(numTrials):
+        sample = random.sample(temps, sampleSize)
+        sampleMean = sum(sample) / len(sample)
+        # mean of the single sample, not the sample of mean samples
+        se = numpy.std(sample) / sampleSize ** 0.5
+        if abs(popMean - sampleMean) > 1.96 * se:
+            numBad += 1
+    print('Fraction outside 95% confidence interval =', numBad/numTrials)
+
+
 # pop = getHighs('temperatures.csv')
 # samp = random.sample(pop, 100)
 # getMeansAndSds(pop, samp, True)
 
 # sample1000(pop, 200)
 
-plotDistributions()
+testStandardErrorOfMean()
+
+# tempsWithSamples(200)
