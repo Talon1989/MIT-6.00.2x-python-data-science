@@ -554,4 +554,4 @@ random.seed(0)
 # print(patient.getResistPop(['drug1', 'drug3']))
 # print(patient.getResistPop(['drug1', 'drug2', 'drug3']))
 
-simulationWithDrug(1, 20, 1.0, 0.0, {"guttagonol": True}, 1.0, 5)
+simulationWithDrug(5, 20, .8, .1, {"guttagonol": True}, 1.0, 5)

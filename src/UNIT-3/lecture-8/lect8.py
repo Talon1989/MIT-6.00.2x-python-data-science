@@ -1,8 +1,8 @@
 import random
 import pylab
 
-import lect7
-from RouletteCls import FairRoulette
+# import lect7
+# from RouletteCls import FairRoulette
 
 
 def getMeanAndStd(X):  #  std = standard deviation, small sigma
@@ -51,20 +51,20 @@ def testCLTSimple():
     pylab.show()  # x=1 y=0.8   ,   x=2, y=0.2
 
 
-def wRoulette():
-    numTrials = 50000
-    numSpins = 2000
-    game = FairRoulette()
-    means = []
-    for _ in range(numTrials):
-        means.append(lect7.findPocketReturns(game, 1
-            , numSpins)[0] / numSpins)
-    pylab.hist(means, bins=19
-            , weights=pylab.array(len(means)*[1]) / len(means))
-    pylab.xlabel('Mean Return')
-    pylab.ylabel('Probability')
-    pylab.title('Expected Return Betting a Pocket')
-    pylab.show()
+# def wRoulette():
+#     numTrials = 50000
+#     numSpins = 2000
+#     game = FairRoulette()
+#     means = []
+#     for _ in range(numTrials):
+#         means.append(lect7.findPocketReturns(game, 1
+#             , numSpins)[0] / numSpins)
+#     pylab.hist(means, bins=19
+#             , weights=pylab.array(len(means)*[1]) / len(means))
+#     pylab.xlabel('Mean Return')
+#     pylab.ylabel('Probability')
+#     pylab.title('Expected Return Betting a Pocket')
+#     pylab.show()
 
 
-wRoulette()
+testCLT()
