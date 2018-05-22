@@ -28,9 +28,9 @@ def plotMeans(numDice, numRolls, numBins, legend, color='b', style='*'):
 
 
 def testCLT():  # checking Central Limit Theorem  ,
-    mean, std = plotMeans(1, 1000000, 19, '1 die')
+    mean, std = plotMeans(1, 1000000, 30, '1 die')
     print('Mean of rolling 1 die =', str(mean), '  Std =', std)
-    mean , std = plotMeans(50, 1000000, 19, '50 dice', 'r', '//')
+    mean , std = plotMeans(50, 1000000, 30, '50 dice', 'r', '//')
     print('Mean of rolling 50 dice =', str(mean), '  Std =', std)
     pylab.title('Rolling Continuous Dice')
     pylab.xlabel('Value')
