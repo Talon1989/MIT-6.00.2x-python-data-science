@@ -65,7 +65,7 @@ def processTrajectories(file):
     pylab.plot(distances, altitudes, 'b',
                label='Linear fit, RSquare='+str(rSquared(meanHeights, altitudes)))
     a,b,c = pylab.polyfit(distances, meanHeights, 2)
-    altitudes = a*distances**2 + b*distances + c
+    altitudes = a*distances**2 + b*distances**1 + c
     pylab.plot(distances, altitudes, 'r',
                label='Quadratic fit, RSquare='+str(rSquared(meanHeights, altitudes)))
     pylab.legend()

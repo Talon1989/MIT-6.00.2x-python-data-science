@@ -83,7 +83,7 @@ def genFits(xVals, yVals, degrees):
     return models
 
 
-def testFits(models, degrees, xVals, yVals, title):
+def testFits(models, degrees, xVals, yVals, title='No Title'):
     pylab.plot(xVals, yVals, 'o', label='Data')
     for i in range(len(models)):
         estYVals = pylab.polyval(models[i], xVals)
@@ -91,13 +91,13 @@ def testFits(models, degrees, xVals, yVals, title):
         pylab.plot(xVals, estYVals,
             label='Fit of degree '+str(degrees[i])+' R2 = '+str(round(error,5)))
     pylab.legend()
-    pylab.title('title')
+    pylab.title(title)
     pylab.show()
 
 
 # fitData1('mysteryData.txt', 2)
 
-xs, ys = getData('mysteryData.txt')
-degreess = 1, 2, 3
-modelss = genFits(xs, ys, degreess)
-testFits(modelss, degreess, xs, ys, 'Mystery Data')
+# xs, ys = getData('mysteryData.txt')
+# degreess = 1, 2, 3
+# modelss = genFits(xs, ys, degreess)
+# testFits(modelss, degreess, xs, ys, 'Mystery Data')
