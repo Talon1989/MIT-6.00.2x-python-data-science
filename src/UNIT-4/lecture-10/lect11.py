@@ -159,5 +159,3 @@ def plotTempData():
 
 random.seed(0)
 plotTempData()
-
-
