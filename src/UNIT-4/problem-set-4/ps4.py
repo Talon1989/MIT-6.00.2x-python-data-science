@@ -174,8 +174,26 @@ def evaluate_models_on_training(x, y, models):
     Returns:
         None
     """
-    # TODO
-    pass
+    bestR = 0
+    bestPrediction = []
+    bestDegree = 0
+    for m in models:
+        prediction = np.polyval(m, x)
+        r = r_squared(y, prediction)
+        if r > bestR:
+            bestR = r
+            bestPrediction = prediction
+            bestDegree = len(m)-1
+            print(m)
+    # print(bestR)
+    pylab.plot(x, y, 'bo')
+    pylab.plot(x, bestPrediction, 'r')
+    pylab.xlabel('year')
+    pylab.ylabel('avg temperature')
+    pylab.title('best degree = '+str(bestDegree)+
+                '\ncoefficient of determination = '+str(round(bestR, 6)))
+    pylab.legend()
+    pylab.show()
 
 
 ### Begining of program
@@ -184,6 +202,7 @@ raw_data = Climate('data.csv')
 #     data = raw_data.get_yearly_temp(c, 1980)
 #     print('average 1980 temperature of', str.lower(c), ' = '
 #           , sum(data) / len(data))
+
 
 # Problem 3
 y = []
