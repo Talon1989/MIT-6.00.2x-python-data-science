@@ -35,7 +35,7 @@ def getData(fName):
     return pylab.array(xVals), pylab.array(yVals)
 
 
-populateData('data2.txt')
+# populateData('data2.txt')
 
 
 # -----------------------------------------------------------
