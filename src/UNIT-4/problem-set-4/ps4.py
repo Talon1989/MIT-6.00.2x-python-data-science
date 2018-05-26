@@ -184,12 +184,11 @@ def evaluate_models_on_training(x, y, models):
             bestR = r
             bestPrediction = prediction
             bestDegree = len(m)-1
-            print(m)
     # print(bestR)
-    pylab.plot(x, y, 'bo')
-    pylab.plot(x, bestPrediction, 'r')
+    pylab.plot(x, y, 'bo', label='data')
+    pylab.plot(x, bestPrediction, 'r', label='trend')
     pylab.xlabel('year')
-    pylab.ylabel('avg temperature')
+    pylab.ylabel('temperature')
     pylab.title('best degree = '+str(bestDegree)+
                 '\ncoefficient of determination = '+str(round(bestR, 6)))
     pylab.legend()
@@ -205,18 +204,20 @@ raw_data = Climate('data.csv')
 
 
 # Problem 3
-y = []
-x = INTERVAL_1
-for year in INTERVAL_1:
-    y.append(raw_data.get_daily_temp('BOSTON', 1, 10, year))
-models = generate_models(x, y, [1])
-evaluate_models_on_training(x, y, models)
+# y = []
+# x = INTERVAL_1
+# for year in INTERVAL_1:
+#     y.append(raw_data.get_daily_temp('BOSTON', 1, 10, year))
+# models = generate_models(x, y, [1])
+# evaluate_models_on_training(x, y, models)
 
 
 # # Problem 4: FILL IN MISSING CODE TO GENERATE y VALUES
-# x1 = INTERVAL_1
-# x2 = INTERVAL_2
-# y = []
-# # MISSING LINES
-# models = generate_models(x, y, [1])
-# evaluate_models_on_training(x, y, models)
+x1 = INTERVAL_1
+x2 = INTERVAL_2
+y = []
+for year in INTERVAL_1:
+    y.append(np.mean(raw_data.get_yearly_temp('BOSTON', year)))
+
+models = generate_models(x1, y, [1])
+evaluate_models_on_training(x1, y, models)
