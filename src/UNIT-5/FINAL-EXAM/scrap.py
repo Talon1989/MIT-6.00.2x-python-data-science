@@ -10,7 +10,7 @@ def drawing_without_replacement_sim(numTrials):
     drawn. Returns a float - the fraction of times 3
     balls of the same color were drawn in the first 3 draws.
     """
-    results = []
+    counter = 0
     for _ in range(numTrials):
         bucket = ['r', 'r', 'r', 'r', 'g', 'g', 'g', 'g']
         result = []
@@ -18,12 +18,9 @@ def drawing_without_replacement_sim(numTrials):
             ball = random.choice(bucket)
             bucket.remove(ball)
             result.append(ball)
-        results.append(result)
-    counter = 0
-    for r in results:
-        if r == ['r', 'r', 'r'] or r == ['g', 'g', 'g']:
+        if result == ['r', 'r', 'r'] or result == ['g', 'g', 'g']:
             counter += 1
-    return counter / len(results)
+    return counter / numTrials
 
 
 import itertools
@@ -64,6 +61,6 @@ def find_combination(choices, total):
 
 
 
-
-# print(drawing_without_replacement_sim(1000))
-print(find_combination([1, 3, 4, 2, 5], 16))
+random.seed(0)
+print(drawing_without_replacement_sim(1000))
+# print(find_combination([1, 3, 4, 2, 5], 16))
